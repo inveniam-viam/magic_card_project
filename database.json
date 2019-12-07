@@ -1,0 +1,8 @@
+{
+    "connectionLimit": 20,
+    "host": "localhost",
+    "user": "root",
+    "password": "rootadminpass",
+    "database": "magic_card_project_test",
+    "multipleStatements": true
+}
