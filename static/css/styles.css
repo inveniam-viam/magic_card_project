@@ -1,0 +1,65 @@
+body {
+  background-color: white;
+
+  font: 16px "Hiragino Sans";
+}
+
+hr {
+  border-style: none;
+  border-top-style: dotted;
+  border-color: grey;
+  border-width: 5px;
+  width: 30%;
+}
+
+h1 {
+  color: #3e4149;
+  font: 30px "Hiragino Sans";
+}
+
+h3 {
+  color: #3e4149;
+  font: 25px "Hiragino Sans";
+}
+
+img {
+  height: 250px;
+}
+
+.button2 {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font: "Hiragino Sans";
+  font-size: 16px;
+}
+
+.optionButtons {
+  background-color: #062034;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font: "Hiragino Sans";
+  font-size: 16px;
+  width: 200px
+}
+
+.optionButtons-delete {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font: "Hiragino Sans";
+  font-size: 16px;
+  width: 200px
+}

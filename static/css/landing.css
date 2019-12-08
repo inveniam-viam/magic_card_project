@@ -1,0 +1,68 @@
+.centerLandingScreen {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  background-color: #062034;
+  color: white;
+  font: 12px "Hiragino Sans";
+  padding: 15px 25px;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+
+}
+
+h1 {
+  font: 30px "Hiragino Sans";
+  color: #062034;
+}
+
+h3 {
+  font: 25px "Hiragino Sans";
+  color: #062034;
+}
+
+input {
+  width: 50%;
+  height: 20px;
+  font: "Hiragino Sans";
+}
+
+::placeholder {
+  text-align: center;
+}
+
+.loginElements{
+  font: "Hiragino Sans";
+}
+
+
+#upper_left {
+	position: absolute;
+	top: 0;
+	left: 0;
+  background-image: url("css/one_corner.png");
+
+}
+#upper_right {
+	position: absolute;
+	top: 0;
+	right: 0%;
+}
+#lower_left {
+	position: absolute;
+	bottom: 0%;
+	left: 0;
+}
+#lower_right {
+	bottom: 0%;
+	right: 0%;
+	position: absolute;
+}

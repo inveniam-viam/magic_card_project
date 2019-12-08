@@ -1,0 +1,141 @@
+body{
+    font-family: "Hiragino Sans GB"
+}
+
+.titleBar{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row
+}
+
+.titleBar-title{
+    width: 60%;
+    height: 100%;
+}
+.titleBar-buttons{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly
+}
+
+.titleBar-buttons-button{
+    width: 150px;
+    background-color: transparent;
+    border: none;
+    outline:none;
+    cursor:pointer;
+    font-size: 16px
+}
+
+.topContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.positionsContainer {
+  width: 20%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+}
+
+.position-box {
+  width: 80%;
+  height: 80%;
+  margin-left: 5%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+}
+
+.position-box-title-box {
+  background-color: black;
+  width: 100%;
+  height: 16%;
+  align-content: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.position-box-title {
+  font-size: 18px;
+}
+
+.position-box-content {
+  height: 84%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px;
+}
+
+.position-box-content-dollar {
+  width: 100%;
+  height: 60%;
+}
+.position-box-content-profitloss {
+  width: 100%;
+  height: 20%;
+}
+
+.position-box-content-cardnumber {
+  width: 100%;
+  height: 20%;
+}
+
+.topChart {
+  width: 80%;
+  height: 400px;
+  background-color: bisque
+}
+
+.overview {
+  display: flex;
+  flex-direction: column;
+}
+
+.overview-title {
+  font-size: 56px;
+}
+
+.overview-deck {
+  height: 300px;
+  width: 100%;
+  display: flex;
+}
+
+.cards-content {
+  height: 100%;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image {
+  width: 100%;
+  height: 80%;
+}
+
+.card-image-img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.card-title {
+  width: 100%;
+  height: 20%;
+}
+
+.card-description-text{
+    color: black;
+}
+
+.cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
