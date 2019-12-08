@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mag.ic</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <script type="text/javascript">
+      function showChangeUserNamePage() {
+        window.location = "/changeUsername.html";
+      }
+
+      function showChangePasswordPage() {
+        window.location = "/changePassword.html";
+      }
+
+      function deleteAccount() {
+        var deleteConfirm = window.confirm(
+          "Are you sure about deleting your account?"
+        );
+
+        if (deleteConfirm) {
+          alert("Your account has been successfully deleted!");
+          window.location = "/";
+        } else {
+          return;
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1 class="test">Mag.ic</h1>
+
+    <table cellspacing="20">
+      <tr>
+        <td>
+          <img
+            src="https://i.kym-cdn.com/photos/images/newsfeed/000/862/065/0e9.jpg"
+            width="200"
+            height="200"
+            alt="Proposed Profile Picture"
+          />
+        </td>
+        <td>
+          <h2>Account Profile</h2>
+          <h2>Reno Farnesi</h2>
+          <p>
+            This is your personal account page. You are free to change your
+            username, password or delete your account here.
+            <br />
+          </p>
+        </td>
+      </tr>
+    </table>
+
+    <hr />
+
+    <h3>Options</h3>
+
+    <div class="userButtons">
+      <div id="changeUsername">
+        <button
+          class="optionButtons"
+          onclick="showChangeUserNamePage()"
+          type="button"
+        >
+          Change Username
+        </button>
+      </div>
+      <br />
+      <div id="changePassword">
+        <button
+          class="optionButtons"
+          onclick="showChangePasswordPage()"
+          type="button"
+        >
+          Change Password
+        </button>
+      </div>
+      <br />
+      <div id="deleteAccount">
+        <button
+          class="optionButtons-delete"
+          name="0"
+          id="2"
+          class="button2"
+          type="button"
+          onclick="deleteAccount()"
+        >
+          Delete Account
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- This is what we call a standard HTML boilerplate code.
+Similar to having a template that we can reuse.
+This actually resembles the template molds which used to be used to print books back in the days of the printing press.
+It's called a boilerplate because steam boilers back in the day would have a plate with their manufacturer's name.
+So much for history, eh?
+ -->
+
+<!-- DOCTYPE stands for document type, and tells the browser to render the file as a HTML5 file
+
+The html tag signifies that everything within is html code.
+
+It usually contains a head tag and a body tag, respectively denoted by <head> and <body>.
+
+The head tag contains information about the web page and tells the browser how to handle the webpage.
+
+The title might tell what the title is. Here, we have just called it Jared's Personal Site.
+
+Meta elements provide extra metadata to the HTML document. Here it tells the browser that everything in our HTML document is to be rendered in the UTF-8 format.
+
+You might sometimes observe that on clicking some link which your Bulgarian buddy sent you, you see a whole bunch of garbled characters. This phenomenon is called
+
+Mojibake (Japanese for character transformation) and happens when something is rendered using the incorrect characterset.
+
+The main cause of Mojibake usually is the fact that different languages encode symbols in different ways, causing them to spit out the nonsense we see.
+
+UTF-8 is the standard encoding used in HTML5 since it includes all the languages too.
+
+Using the UTF8 encoding in the boilerplate ensures that your website is rendered properly, even to visitors from other countries / other international browsers.
+
+
+You can also add other metadata fields, such as description or keywords to tell search engines more about your website/page.
+
+Say for instance, you add a meta field such as <meta name="description" content = "Jared is an undergraduate student at Drexel University."
+
+What happens on searching say, Google, for your website is that the description you see in the Search results would be the same as whatever
+you fed to the description content in the meta data.
+
+BASICALLY, HOW TO DISPLAY INFO IN THE SEARCH INDEX BOIS.
+-->
+
+<!-- While trying to italicize your description, you were searching for documentation.
+
+  There are two options to italicize text: the <i> tag and the emphasis tag (<em>). These two tags necessarily do the same
+
+  from a visual standpoint, but the i tag is used to plainly italicize text whereas the em tag is used to draw emphasis on the text.
+
+
+  Same goes for boldface: whether to use <b> or to use <strong.
+  -->
+
+<!-- Lists
+
+  ul stands for unordered lists (think of it as a bullet list for now)
+
+  Start your list with the <ul> tag. And then for the contents of your list, enclose each list element within the li tags (<li></li>).
+
+  Similarly, ol stands for ordered lists.
+
+  To implement ordered lists, follow the same things as for the unordered lists, except use ol.
+
+  There's a couple other things that can be done with ordered lists by taking advantage of its attributes.
+
+  Example 1: Roman Numeral based OLs
+
+  Just use <ol type="i"> </ol>
+
+  Example 2: Lists that start from some arbitrary number.
+
+  Just use <ol start = "0"> </ol> to get a list that goes from 0,1,2...
+
+  -->
+
+<!-- Images
+
+   The image tag is actually another self-closing tag, meaning you dont need to use a closing tag.
+
+   But you can't just embed an image by just using the image tag. This should make sense since to embed an image, we would rendered
+
+   to specify some kind of source or URL or whatever for the image that we are attempting to embed.
+
+   So, here is the syntax:
+
+       <img src = "jared.png" alt= "jared smiling" />
+
+       This is an image tag with the src (source) attribute pointing to the image jared.png, which is in the same working directory in this case.
+
+       The alt attribute will be the text that is going to be displayed in the event the image fails to load. It's also useful in helping search engines to
+
+       index and rank your webpage.
+
+    -->
+
+<!-- Hyperlinks
+
+  HyperText is basically nothing but a bunch of text documents that can be linked together by hyperlinks.
+
+  Click on a link, be taken to the next page and so forth.
+
+  What are these links made of?
+
+  To add a link, add an <a href="#"> tag right in front of the text you want to link over and an </a> right after that.
+
+  the href is nothing but a hyperlink you're going to be pointed towards to.
+
+  <a href = "LINK DESTINATION"> Link Text</a>
+
+  Adding the download attribute after the a in the anchor tag forces the browser to download whatever that is being clicked on to one's local machine.
+
+
+      -->
+
+<!-- Tables
+
+      Tables are a super effective way of presenting data, be it just presenting actual tabular data, or be it just displaying things with uniform indents.
+
+      A table can be created in HTML using the <table> </table> tags.
+
+      Working with a table is a little weird since we're only going to be using the row elements to create the table.
+
+      To create a row, use the <tr></tr> tags.
+
+      To add data, use the <td></td> tags.
+
+      To add a header, use the <th></th> tags.
+
+      It's always a good idea to separate the header and data portions by using the <thead></thead> and <tbody></tbody> tags.
+
+      -->

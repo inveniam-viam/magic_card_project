@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Change Username</title>
+    <link rel="stylesheet" href="css/changeUsernamePassword.css" />
+  </head>
+
+  <script type="text/javascript">
+    function changeUserName() {
+      var newUserName = document.getElementById("newUserName").value;
+      var password = document.getElementById("password").value;
+
+      // call the update user function here -- make it return true or false
+      updateUser = true;
+      if (updateUser) {
+        alert("Username update was successful!");
+        document.location = "/";
+      } else {
+        return;
+      }
+    }
+  </script>
+  <body>
+    <div>
+      <h1>Mag.ic</h1>
+      <p>Your one stop shop for Magic: The Gathering Cards</p>
+      <br />
+      <h3>Change Username</h3>
+    </div>
+
+    <div>
+      <input
+        class="center-block"
+        type="text"
+        id="newUserName"
+        placeholder="Enter new Username (min. 6 characters)"
+      />
+      <br />
+      <input
+        class="center-block"
+        type="password"
+        id="password"
+        placeholder="Enter Password to make changes"
+      />
+      <br />
+      <button
+        class="center-block"
+        type="button"
+        name="button"
+        onclick="changeUserName()"
+      >
+        Submit
+      </button>
+    </div>
+  </body>
+</html>
