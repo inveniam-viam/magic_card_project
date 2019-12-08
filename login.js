@@ -1,14 +1,21 @@
 var database = require('./controllers/database');
-var db = new database()
-var app = require('express')
+//var db = new database();
+var express = require('express');
+var app = express();
 var session = require('client-sessions');
+
+app.use(express.static("."));
+
+app.listen(8080,function(){
+    console.log("Server open on port 8080"); //ensuring that we can connect to the node server
+});
 
 app.get('/', function (req,res){
     res.write(`<html><body>`);
     if(req.session.msg){
         res.write(req.session.msg);
         delete req.session.msg;
-    }
+    }   
     res.write(`
         <form method=post action='/login'>
         <input type=text name=username>
@@ -36,7 +43,7 @@ app.post('/login', function(req, res){
 
 app.get('/getUsers', function(req,res){
     if(!req.session.id){
-        req.session.msg = 'Not allowd there';
+        req.session.msg = 'Not allowed there';
         return res.redirect('/');
     }
     db.once('usertable',function(rows){
