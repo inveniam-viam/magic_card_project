@@ -10,6 +10,13 @@ app.listen(8080,function(){
     console.log("Server open on port 8080"); //ensuring that we can connect to the node server
 });
 
+app.use(session({
+    cookieName: 'session',
+    secret: 'asdfghjkl;',
+    duration: 30 * 60 * 1000,
+    activeDuration: 5 * 60 * 1000,
+}))
+
 app.get('/', function (req,res){
     res.write(`<html><body>`);
     if(req.session.msg){
