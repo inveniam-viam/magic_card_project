@@ -1,0 +1,50 @@
+body {
+  background-color: white;
+}
+
+h1{
+  font: 30px "Hiragino Sans";
+  text-align: center;
+  color: #062034;
+}
+
+h3{
+  font: 25px "Hiragino Sans";
+  text-align: center;
+  color: #062034;
+}
+
+
+.SearchBoxes {
+  text-align: center;
+}
+
+.submitButton {
+  text-align: center;
+}
+
+button {
+  text-align: center;
+  background-color: #062034;
+  color: white;
+  font: 12px "Hiragino Sans";
+  padding: 15px 32px;
+
+}
+
+input {
+  width: 300px;
+  height: 20px;
+  font: "Hiragino Sans";
+}
+
+::placeholder {
+  text-align: center;
+}
+
+.deckName{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
