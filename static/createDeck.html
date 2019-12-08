@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Create a Deck</title>
+    <link rel="stylesheet" href="css/checkdecks.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      window.addEventListener(
+        "load",
+        function() {
+          $.get("cards/getallcards", function(data) {
+            var select = document.getElementById("cards");
+            for (var i = 0; i <= data.length; i++) {
+              var option = document.createElement("option");
+              option.text = data[i].name;
+              option.value = data[i].id
+              select.add(option, 1);
+            }
+          });
+          document.getElementById('AddMoreCards').style.display = 'none'
+        },
+        false,
+
+      );
+
+      function createDeck(){
+        var deckName = document.getElementById('deckName').value
+        var userId = 2
+        var cardId = document.getElementById('cards').value
+        var amount = document.getElementById('cardAmount').value
+        var deckData = {user_id: userId, deck_name: deckName, card_id: cardId, amount: amount }
+        console.log(deckData)
+        $.ajax({
+                    type: "POST",
+                    url: "/decks",
+                    data: deckData,
+                    dataType: "json",
+                    success: function (msg) {
+                        
+                    },
+                    error: function (result) {
+                        return
+                    }
+                });
+        document.getElementById('CreateDeckButton').style.display = 'none'
+        document.getElementById('AddMoreCards').style.display = 'initial'
+
+      }
+
+
+      function addCardToDeck(){
+        var cardId = document.getElementById('cards').value
+        var amount = document.getElementById('cardAmount').value
+        var cardData = {card_id: cardId, amount: amount }
+        $.ajax({
+                    type: "POST",
+                    url: "/decks/add_card",
+                    data: cardData,
+                    dataType: "json",
+                    success: function (msg) {
+                        
+                    },
+                    error: function (result) {
+                        return
+                    }
+                });
+      }
+
+      function done(){
+        alert("Success! Your deck has been created")
+        window.location = '/profileHome.html'
+      }
+
+
+    </script>
+  </head>
+  <body>
+    <div class="headerContainer">
+      <h1>Enter the name for the deck</h1>
+      <div class="deckName">
+        <div>
+          <input type="text" id="deckName" placeholder="Deck Name" />
+        </div>
+      </div>
+
+      <br />
+      <h3>Select the card and the amount:</h3>
+      <div class="cardInput">      
+        <select id="cards" name="cards"></select>
+        <input type="text" placeholder="Ex: 3" name="cardAmount" id="cardAmount"/>
+      </div>
+      
+
+    </div>
+
+    </div>
+
+    <div class="submitButton">
+      <br />
+      <br />
+      <button type="button" id="CreateDeckButton" name="submitButton" onclick="createDeck()">Create Deck</button>
+      <button type="button" id="AddMoreCards" name="submitButton" onclick="addCardToDeck()">Add Card</button>
+      <br/>
+      <br/>
+      <button type="button" id="doneButton" name="doneButton" onclick="done()">Done</button>
+
+    </div>
+    <br/>
+
+
+
+    <br />
+    <br />
+
+    <div class="searchResults"></div>
+  </body>
+</html>

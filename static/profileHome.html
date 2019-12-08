@@ -67,8 +67,9 @@
           <h1 class="overview-title">Your Overview</h1>
         </div>
         <div class="overview-deck">
-          <!-- Call to get cards -->
+          <!--get all to get cards -->
           <script type="text/javascript">
+          // [TODO] Pass in user ID below
             $.get("users/1", function(data) {
               var cards = data.user_cards;
               var cardHTML = "";
