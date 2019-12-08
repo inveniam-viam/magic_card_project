@@ -92,15 +92,18 @@ app.get('/getUsers', function(req,res){
                 <option value=2>Admin</option>
             </select>
             <submit value = 'Add User'>
-            </form>`;
+            </form>
+            <form method=post action='/logout'>
+            <input type=submit value=Logout>
+            </form>
+            `;
         res.write('<html><body>'+str+'</body></html>');
         res.end();
     });
     db.getUserTable();
 });
 
-app.get('/logout', function (req, res){
+app.post('/logout', function (req, res){
     req.session.reset();
-    res.session.msg = 'You logged out';
     return res.redirect('/');
 });

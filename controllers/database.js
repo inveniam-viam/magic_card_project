@@ -22,7 +22,7 @@ con.connect(function(err) {
 class Database extends EventEmitter{
     constructor(){super();}
 
-    getInfo(request){
+    getInfo_login(request){
         var URL = 'http://localhost:8080/login';
         var self = this;
         request.get(URL, function(error, response, body){
@@ -32,17 +32,25 @@ class Database extends EventEmitter{
             self.emit('loggedin',1);
         });
     }
+    getInfo_register(request){
+        var URL = 'http://localhost:8080/register';
+        var self = this;
+        request.get(URL, function(error,response,body){
+            var json = JSON.parse(body);
+            var username = json.username;
+            var password = json.password;
+            self.emit('register',1);
+        });
+    }
 
     login(username,password){
         var str = "select accounttype from users where username="+con.escape(username) 
-        + " AND  password=PASSWORD("+con.escape(password) +")";
+        + " AND  password=PASSWORD("+con.escape(password)+");";
         var self = this;
         con.query(str,
             function(err, rows, fields){
                 if(err){
                     console.log("Error: can't login");
-                    console.log(con.escape(username));
-                    console.log(con.escape(password));
                     self.emit('loggedin',-1);
                 }
                 else{
@@ -58,7 +66,7 @@ class Database extends EventEmitter{
     
     register(username,password){
         var str = "insert into users (username, password) values ("+con.escape(username) 
-        + ", " +con.escape(password)+");"
+        + ", PASSWORD(" +con.escape(password)+"));"
         var self = this;
         con.query(str, function(err,rows, fields){
             if(err){
@@ -73,7 +81,7 @@ class Database extends EventEmitter{
     }
 
     getUserTable(){
-        var str = "select username, accountype from users order by username";
+        var str = "select username, accounttype from users order by username";
         var self = this;
         con.query(str,
             function(err, rows, fields){
