@@ -1,10 +1,13 @@
 var database = require('./controllers/database');
-//var db = new database();
+var db = new database.Database();
 var express = require('express');
 var app = express();
 var session = require('client-sessions');
+var bodyParser = require('body-parser');
 
 app.use(express.static("."));
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 app.listen(8080,function(){
     console.log("Server open on port 8080"); //ensuring that we can connect to the node server
@@ -17,6 +20,7 @@ app.use(session({
     activeDuration: 5 * 60 * 1000,
 }))
 
+
 app.get('/', function (req,res){
     res.write(`<html><body>`);
     if(req.session.msg){
@@ -24,11 +28,16 @@ app.get('/', function (req,res){
         delete req.session.msg;
     }   
     res.write(`
+        <h1> login/register form </h1>
         <form method=post action='/login'>
         <input type=text name=username>
         <input type=password name=password>
-        <input type=submit value=login>
-        <input type=submit value=register>
+        <input type=submit value=Login>
+        </form> <br>
+        <form method=post action='/register'>
+        <input type=text name=username>
+        <input type=password name=password>
+        <input type=submit value=Register>
         </form>
         </body>
         </html>`);
@@ -59,7 +68,8 @@ app.post('/register', function(req, res){
             req.session.msg = "Invalid registration. Try again?"
             return res.redirect('/')
         }
-    })
+    });
+    db.register(req.body.username,req.body.password);
 });
 
 app.get('/getUsers', function(req,res){
