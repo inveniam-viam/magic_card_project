@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Welcome!</title>
+    <link rel="stylesheet" href="/css/profilePage.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="//db.onlinewebfonts.com/c/3b2646a48566403a55f62ceddbecbe18?family=Hiragino+Sans+GB" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript">
+      function createDeck(){
+        window.location = '/createDeck.html'
+      }
+
+      function checkDeck(){
+        window.location = '/checkDeck.html'
+      }
+
+      function accountSettings(){
+        window.location = '/accountSettings.html'
+      }
+    
+    </script>
+  
+  </head>
+  <body>
+    <div class="profileContent">
+
+      <div class="titleBar">
+        <div class="titleBar-title"><h1>Mag.ic</h1></div>
+        <div class="titleBar-buttons">
+            <button class="titleBar-buttons-button" onclick="createDeck()"> Create Deck </button>
+
+            <button class="titleBar-buttons-button" onclick="checkDeck()"> Check Deck </button>
+
+            <button class="titleBar-buttons-button" onclick="accountSettings()"> Account Settings </button>
+          
+        </div>
+
+      </div>
+      <div class="topContainer">
+        <div class="positionsContainer">
+          <div class="position-box">
+            <div class="position-box-title-box">
+              <div class="position-box-title"><p>Your Positions</p></div>
+            </div>
+
+            <div class="position-box-content">
+              <div class="position-box-content-dollar">
+                <h1>$</h1>
+              </div>
+              <div class="position-box-content-profitloss">
+                <p>Profit / Loss</p>
+              </div>
+              <div class="position-box-content-cardnumber">
+                <p>Number of Cards</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topChart">Chart</div>
+      </div>
+
+      <div class="overview">
+        <div>
+          <h1 class="overview-title">Your Overview</h1>
+        </div>
+        <div class="overview-deck">
+          <!-- Call to get cards -->
+          <script type="text/javascript">
+            $.get("users/1", function(data) {
+              var cards = data.user_cards;
+              var cardHTML = "";
+              
+              for (i = 0; i < cards.length; i++) {
+                var cardData = `<div class="cards-content">
+                              <div class="card-image">
+                          <img class="card-image-img"
+                            src="${cards[i].image_url}"
+                          />
+                        </div>
+
+                        <div class="card-description">
+                          <p class="card-description-text"> ${cards[i].name} </p>
+                          <b> Amount: </b>${cards[i].amount}
+                        </div>
+
+                      </div>`;
+
+                cardHTML += cardData;
+              }
+
+              const cardDiv = document.getElementById("cardsData");
+              cardDiv.innerHTML = cardHTML;
+            });
+          </script>
+
+          <div id="cardsData" class="cards">
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
