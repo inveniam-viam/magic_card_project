@@ -35,23 +35,23 @@ class Database extends EventEmitter {
         super();
     }
 
-    async loadAllCards() {
-        var cards = require('../scryfall-default-cards.json');
-        var chunks = this.chunk(cards, 1000);
-        var i = 0;
-        var res = await this.loadCards(chunks[i++]);
-        var all = [res]
-        while (i < chunks.length) {
-            res = await this.loadCards(chunks[i++]);
-            all.concat(res.data)
-        }
-        return all
-    }
+    // async loadAllCards() {
+    //     var cards = require('../scryfall-default-cards.json');
+    //     var chunks = this.chunk(cards, 1000);
+    //     var i = 0;
+    //     var res = await this.loadCards(chunks[i++]);
+    //     var all = [res]
+    //     while (i < chunks.length) {
+    //         res = await this.loadCards(chunks[i++]);
+    //         all.concat(res.data)
+    //     }
+    //     return all
+    // }
 
-    chunk = (arr, size) =>
-        Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
-            arr.slice(i * size, i * size + size)
-    );
+    // chunk = (arr, size) =>
+    //     Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
+    //         arr.slice(i * size, i * size + size)
+    // );
 
     async loadCards(chunk) {
         return new Promise(function(resolve, reject) {

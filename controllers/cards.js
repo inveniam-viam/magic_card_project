@@ -27,7 +27,27 @@ class Card extends EventEmitter {
             }
         })
     }
+
+
+    get_all_cards(){
+        var self = this;
+        db_pool.getConnection(function(err, conn) {
+            if (err) {
+                self.emit('get_all_cards', 0);
+            } else {
+                var query = 'SELECT * from cards LIMIT 20';
+                conn.query(query, function(err, results, fields) {
+                    if (results.length > 0) {
+                        self.emit('get_all_cards', results);
+                    } else {
+                        self.emit('get_all_cards', null);
+                    }
+                });
+            }
+        })
+    }
 }
+
 
 var card = new Card();
 
@@ -41,6 +61,20 @@ card_router.post('/verify', function(req, res) {
     });
     card.verify_card(req.body.card_name);
 });
+
+
+card_router.get('/getallcards', function(req, res) {
+    card.once('get_all_cards', function(msg) {
+        if (msg) {
+            res.status(200).json(msg);
+        } else {
+            res.status(404).json({error: "Cards not found"});
+        }
+    });
+    card.get_all_cards();
+});
+
+
 
 exports.Card = Card;
 exports.router = card_router;

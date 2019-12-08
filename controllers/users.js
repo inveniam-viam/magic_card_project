@@ -14,7 +14,7 @@ class User extends EventEmitter {
         var deck_query = 'SELECT deck_id, deck_name FROM user_decks WHERE user_id=?';
         var deck_results = await db.executeQuery(deck_query, [user_id]);
         
-        var cards_query = 'SELECT uc.card_id, c.name, uc.amount FROM user_collections AS uc JOIN cards AS c ON c.id = uc.card_id WHERE uc.user_id=?';
+        var cards_query = 'SELECT uc.card_id, c.name, c.image_url, uc.amount FROM user_collections AS uc JOIN cards AS c ON c.id = uc.card_id WHERE uc.user_id=?';
         var cards_results = await db.executeQuery(cards_query, [user_id]);
 
         this.emit('user_info', {user_decks: deck_results, user_cards: cards_results});
