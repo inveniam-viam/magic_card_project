@@ -43,3 +43,26 @@ input {
   font: "Hiragino Sans";
 }
 
+
+#upper_left {
+	position: absolute;
+	top: 0;
+	left: 0;
+  background-image: url("css/one_corner.png");
+
+}
+#upper_right {
+	position: absolute;
+	top: 0;
+	right: 0%;
+}
+#lower_left {
+	position: absolute;
+	bottom: 0%;
+	left: 0;
+}
+#lower_right {
+	bottom: 0%;
+	right: 0%;
+	position: absolute;
+}

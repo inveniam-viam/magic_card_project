@@ -2,18 +2,17 @@ body {
   background-color: white;
 }
 
-h1{
+h1 {
   font: 30px "Hiragino Sans";
   text-align: center;
   color: #062034;
 }
 
-h3{
+h3 {
   font: 25px "Hiragino Sans";
   text-align: center;
   color: #062034;
 }
-
 
 .SearchBoxes {
   text-align: center;
@@ -29,7 +28,6 @@ button {
   color: white;
   font: 12px "Hiragino Sans";
   padding: 15px 32px;
-
 }
 
 input {
@@ -42,9 +40,19 @@ input {
   text-align: center;
 }
 
-.deckName{
+.deckName {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center
+  align-items: center;
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardInput{
+  display: flex;
+  justify-content: center
 }
