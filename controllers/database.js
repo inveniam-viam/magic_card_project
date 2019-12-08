@@ -41,6 +41,23 @@ class Database extends EventEmitter{
             }
         );
     }
+    
+    register(username,password){
+        var str = "insert into users (username, password) values ('"+con.escape(username) 
+        + "', '" +con.escape(password)+"');"
+        var self = this;
+        con.query(str, function(err,rows, fields){
+            if(err){
+                console.log('Error');
+                self.emit('Username and password cannot register',-1);
+            }
+            else{
+                console.log('register succcessful?')
+                self.emit('register', 1);
+            }
+        });
+    }
+    
     get UserTable(){
         var str = "select username, accountype from users order by username";
         var self = this;
@@ -53,8 +70,7 @@ class Database extends EventEmitter{
                 else{
                     self.emit('usertable',rows);
                 }
-            }
-        )
+            })
     }
 }
 exports.Database = Database

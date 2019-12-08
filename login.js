@@ -20,7 +20,8 @@ app.get('/', function (req,res){
         <form method=post action='/login'>
         <input type=text name=username>
         <input type=password name=password>
-        input type=submit value=Login>
+        <input type=submit value=login>
+        <input type=submit value=register>
         </form>
         </body>
         </html>`);
@@ -39,6 +40,19 @@ app.post('/login', function(req, res){
         }
     });
     db.login(req.body.username, req.body.password);
+});
+
+app.post('/register', function(req, res){
+    db.once('register',function(msg){
+        if(msg==1){
+            req.session.msg = "Registered, please login."
+            return res.redirect('/');
+        }
+        else {
+            req.session.msg = "Invalid registration. Try again?"
+            return res.redirect('/')
+        }
+    })
 });
 
 app.get('/getUsers', function(req,res){
