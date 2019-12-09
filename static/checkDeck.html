@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>Check Deck</title>
+    <link rel="stylesheet" href="css/checkDeck.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+      window.addEventListener(
+        "load",
+        function() {
+          $.get("/users/1", function(data) {
+            var user_decks = data.user_decks;
+            var select = document.getElementById("deck");
+            for (var i = 0; i <= user_decks.length; i++) {
+              var option = document.createElement("option");
+              option.text = user_decks[i].deck_name;
+              option.value = user_decks[i].deck_id;
+              select.add(option, 1);
+            }
+          });
+        },
+        false
+      );
+
+      // To verify deck
+      function verifyDeck() {
+        var deckId = document.getElementById("deck").value;
+        // grab userID here and pass in the ajax call below /users/:userID/...
+
+        $.ajax({
+          type: "POST",
+          url: "/users/2/verify_deck",
+          data: { deck_id: deckId },
+          dataType: "json",
+          success: function(msg) {
+              // ON SUCCESS
+          },
+          error: function(result) {
+            return;
+          }
+        });
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="checkDeckContainer">
+      <div class="checkDeck-dropdown">
+        <h1>Check what you need to complete a deck</h1>
+        <h3>Deck List:</h3>
+        <select id="deck" name="deck"></select>
+        <button name="getdecks" id="getdecks" onclick="verifyDeck()">Go</button>
+      </div>
+    </div>
+  </body>
+</html>
