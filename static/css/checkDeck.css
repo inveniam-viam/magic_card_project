@@ -1,0 +1,10 @@
+body {
+    font-family:"Hiragino Sans";
+  }
+  
+
+.checkDeckContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
